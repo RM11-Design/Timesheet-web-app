@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCC staff portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        .week-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .input-container {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .input-container input {
+            font-size: 15px;
+            padding: 10px;
+            width: 150px;
+        }
+        .input-container label {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        /* button */
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <div class="container">
+            <div class="week-container">
+                <div class="input-container">
+                    <label for="week_one_date">Week 1 Date:</label>
+                    <input type="date" id="week_one_date" name="prothom_shopta">
+                </div>
+                <div class="input-container">
+                    <label for="week_one_hrs">Week 1 Hours:</label>
+                    <input type="number" id="week_one_hrs" name="week_hours_one">
+                </form>
+                </div>
+            </div>
+
+            <div class="week-container">
+                <div class="input-container">
+                    <label for="week_two_date">Week 2 Date:</label>
+                    <input type="date" id="week_two_date" name="second_shopta">
+                </div>
+                <div class="input-container">
+                    <label for="week_two_hrs">Week 2 Hours:</label>
+                    <input type="number" id="week_two_hrs" name="week_hours_two">
+                </div>
+            </div>
+
+            <div class="week-container">
+                <div class="input-container">
+                    <label for="week_three_date">Week 3 Date:</label>
+                    <input type="date" id="week_three_date" name="third_shopta">
+                </div>
+                <div class="input-container">
+                    <label for="week_three_hrs">Week 3 Hours:</label>
+                    <input type="number" id="week_three_hrs" name="week_hours_three">
+                </div>
+            </div>
+
+            <div class="week-container">
+                <div class="input-container">
+                    <label for="week_four_date">Week 4 Date:</label>
+                    <input type="date" id="week_four_date" name="fourth_shopta">
+                </div>
+                <div class="input-container">
+                    <label for="week_four_hrs">Week 4 Hours:</label>
+                    <input type="number" id="week_four_hrs" name="week_hours_four">
+                </div>
+            </div>
+
+            <div class="week-container">
+                <div class="input-container">
+                    <label for="week_five_date">Week 5 Date:</label>
+                    <input type="date" id="week_five_date" name="fifth_shopta">
+                </div>
+                <div class="input-container">
+                    <label for="week_five_hrs">Week 5 Hours:</label>
+                    <input type="number" id="week_five_hrs" name="week_hours_five">
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="two_months">Two Months Worked:</label>
+                <input type="text" id="two_months" name="dui_mash">
+            </div>
+            <button class="submit-btn" type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
+
