@@ -35,8 +35,11 @@ def job(job_id):
     job = Job.query.get_or_404(job_id)
     return render_template('job.html', job=job)
 
-@app.route('/', methods=['GET', 'POST'])
-def UCC_login_in():
+
+@app.route('/timesheet/<int:job_id>', methods=['GET', 'POST'])
+def UCC_login_in(job_id):
+    job = Job.query.get_or_404(job_id)
+
 
 # Set variables to zero, otherwise the web app crashes
     total_salary = 0
@@ -109,6 +112,7 @@ def UCC_login_in():
             print("Invalid")
         
     return render_template('user_portal.html',
+                                job=job,
                                 two_months=two_months,
                                 today_date=today_date,
                                 week_one_date=week_one_date,

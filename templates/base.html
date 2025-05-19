@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - FlaskApp</title>
+        <!-- Links to an external CSS stylesheet located in the 'static' folder -->
     <style>
         .title {
             margin: 5px;
@@ -34,9 +35,8 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">FlaskApp</a>
+        <a href="{{ url_for('index') }}">Home</a>
         <a href="#">Create</a>
-        <a href="#">About</a>
     </nav>
     <hr>
     <div class="content">

@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <span class="title">
-        <h1 class="title">{% block title %} Jobs {% endblock %}</h1>
-    </span>
     <div class="content">
             <div class="job">
                 <p><b>#{{ job.id }}</b></p>
@@ -12,6 +9,7 @@
                 </b>
                 <p>{{ job.job_title }}</p>
                 <p>Joined: {{ job.created_at }}</p>
+                <a href="{{ url_for('UCC_login_in', job_id=job.id) }}" class="submit-btn">Go to Timesheet</a>
             </div>
     </div>
 {% endblock %}

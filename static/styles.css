@@ -1,0 +1,52 @@
+
+/* Actual timesheet */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.container {
+    text-align: center;
+}
+.week-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.input-container {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+.input-container input {
+    font-size: 15px;
+    padding: 10px;
+    width: 150px;
+}
+.input-container label {
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+/* button */
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
