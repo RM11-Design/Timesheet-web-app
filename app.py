@@ -1,9 +1,39 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
+from flask_sqlalchemy import SQLAlchemy
 from docxtpl import DocxTemplate
 from datetime import datetime
+from sqlalchemy.sql import func
 import time
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+        'sqlite:///' + os.path.join(basedir, 'database.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Job(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    department = db.Column(db.String(100), nullable=False)
+    job_title = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    def __repr__(self):
+        return f'<Job {self.department}>'
+    
+@app.route('/')
+def index():
+    jobs = Job.query.all()
+    return render_template('index.html', jobs=jobs)
+
+@app.route('/<int:job_id>/')
+def job(job_id):
+    job = Job.query.get_or_404(job_id)
+    return render_template('job.html', job=job)
 
 @app.route('/', methods=['GET', 'POST'])
 def UCC_login_in():
@@ -94,4 +124,4 @@ def UCC_login_in():
                                 total_salary=total_salary)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
