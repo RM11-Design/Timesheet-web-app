@@ -80,7 +80,7 @@ def UCC_login_in(job_id):
 
             # Load the template
 
-            doc = DocxTemplate("C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Hourly Timesheet template (business edition).docx")
+            doc = DocxTemplate(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Timesheet-web-app\\Hourly Timesheet template (business edition).docx")
 
             today_date = datetime.today().strftime("%d %b, %y")
 
@@ -106,7 +106,7 @@ def UCC_login_in(job_id):
 
             # Render and save the document
             doc.render(all_info)
-            doc.save(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Hourly Timesheet template {two_months}.docx")
+            doc.save(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Timesheet-web-app\\Hourly Timesheet template (business edition) {two_months}.docx")
         
         except ValueError:
             print("Invalid")
