@@ -82,7 +82,9 @@ def UCC_login_in(job_id):
 
             doc = DocxTemplate(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Timesheet-web-app\\Hourly Timesheet template (business edition).docx")
 
-            today_date = datetime.today().strftime("%d %b, %y")
+            department = job.department
+            staff = job.job_title
+            today_date = datetime.today().strftime("%d-%b-%y")
 
             # Information to populate the Word template
             all_info = {
@@ -101,7 +103,9 @@ def UCC_login_in(job_id):
                 "wage_and_hours": round(wage_and_hours, 2),
                 "holiday_pay": round(holiday_pay, 2),
                 "total_salary": round(total_salary, 2),
-                "today_date": today_date
+                "today_date": today_date,
+                "department": department,
+                "staff":staff
             }
 
             # Render and save the document
