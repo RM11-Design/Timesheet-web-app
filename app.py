@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect,send_file
+import tempfile
 from flask_sqlalchemy import SQLAlchemy
 from docxtpl import DocxTemplate
 from datetime import datetime
@@ -80,7 +81,7 @@ def UCC_login_in(job_id):
 
             # Load the template
 
-            doc = DocxTemplate(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Timesheet-web-app\\Hourly Timesheet template (business edition).docx")
+            doc = DocxTemplate("Hourly Timesheet template (business edition).docx")
 
             department = job.department
             staff = job.job_title
@@ -109,8 +110,10 @@ def UCC_login_in(job_id):
             }
 
             # Render and save the document
-            doc.render(all_info)
-            doc.save(f"C:\\Users\\tmrom\\OneDrive\\Desktop\\Python\\PushingTheBoundaries\\UCC_automated_web_app\\Timesheet-web-app\\Hourly Timesheet template (business edition) {two_months}.docx")
+            temp_file_path = tempfile.NamedTemporaryFile(delete=False, suffix=".docx").name
+            doc.save(temp_file_path)
+
+            return send_file(temp_file_path, as_attachment=True, download_name=f"Timesheet_{two_months}.docx")
         
         except ValueError:
             print("Invalid")
