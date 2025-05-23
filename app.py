@@ -109,6 +109,8 @@ def UCC_login_in(job_id):
                 "staff":staff
             }
 
+            doc.render(all_info)
+
             # Render and save the document
             temp_file_path = tempfile.NamedTemporaryFile(delete=False, suffix=".docx").name
             doc.save(temp_file_path)
