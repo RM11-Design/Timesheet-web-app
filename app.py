@@ -21,6 +21,7 @@ class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     department = db.Column(db.String(100), nullable=False)
     job_title = db.Column(db.String(100), nullable=False)
+    line_manager = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
     def __repr__(self):

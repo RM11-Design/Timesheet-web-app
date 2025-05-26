@@ -2,14 +2,15 @@
 
 {% block content %}
     <div class="content">
-            <div class="job">
+        <div class="job">
                 <!-- <p><b>#{{ job.id }}</b></p> -->
                 <b>
                     <p class="department">{{ job.department }}</p>
                 </b>
                 <p>{{ job.job_title }}</p>
                 <p>Joined: {{ job.created_at }}</p>
+                <p>Line Manager: {{ job.line_manager }}</p>
                 <a href="{{ url_for('UCC_login_in', job_id=job.id) }}" class="submit-btn">Go to Timesheet</a>
-            </div>
+        </div>
     </div>
 {% endblock %}
