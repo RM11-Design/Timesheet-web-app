@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="main-title">{% block title %} My Profile {% endblock %}</h1>
+
+<br></br>
+<strong>First Name:</strong>
+{{ profile.firstname }}</br>
+
+<strong>Last Name:</strong>
+{{ profile.lastname }}</br>
+
+<strong>Email:</strong>
+{{ profile.email }}</br>
+
+<!-- <div class="user-details">
+    <label>Name: </label>
+    <input type="text" name="Name">
+</div> -->
+
+{% endblock %}

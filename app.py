@@ -13,6 +13,10 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] =\
         'sqlite:///' + os.path.join(basedir, 'database.db')
+
+app.config['SQLALCHEMY_BINDS'] = {
+    'user': 'sqlite:///' + os.path.join(basedir, 'the_users.db')
+}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -26,17 +30,51 @@ class Job(db.Model):
                            server_default=func.now())
     def __repr__(self):
         return f'<Job {self.department}>'
+
+class Employee(db.Model):
+    __bind_key__ = 'user'
+    staff_id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(100), nullable=False)
+    lastname = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    def __repr__(self):
+        return f'<Employee {self.staff_id}>'
     
 @app.route('/')
 def index():
     jobs = Job.query.all()
     return render_template('index.html', jobs=jobs)
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 @app.route('/<int:job_id>/')
 def job(job_id):
     job = Job.query.get_or_404(job_id)
     return render_template('job.html', job=job)
 
+# @app.route('/<int:job_id>/edit/', methods=('GET', 'POST'))
+# def edit(job_id):
+#     job = Job.query.get_or_404(job_id)
+
+#     if request.method == 'POST':
+#         firstname = request.form['firstname']
+#         lastname = request.form['lastname']
+#         email = request.form['email']
+
+#         job.firstname = firstname
+#         job.lastname = lastname
+#         job.email = email
+
+#         db.session.add(job)
+#         db.session.commit()
+
+#         return redirect(url_for('index'))
+
+#     return render_template('edit.html', job=job)
 
 @app.route('/timesheet/<int:job_id>', methods=['GET', 'POST'])
 def UCC_login_in(job_id):
